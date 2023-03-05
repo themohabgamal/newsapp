@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/API/apiManager.dart';
 import 'package:news_app/theme.dart';
 import 'package:news_app/ui/News/news_item.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../modules/NewsResponse.dart';
 import '../Categories/category_tabs.dart';
 
@@ -76,7 +76,11 @@ return [
   @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
-    return Center(child:Text('Looking for special news?',style: Theme.of(context).textTheme.headline5,),);
+    return Center(
+      child:Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(10),
+          child: Text(AppLocalizations.of(context)!.looking,style: Theme.of(context).textTheme.headline5,textAlign: TextAlign.center,)),);
   }
   
 }

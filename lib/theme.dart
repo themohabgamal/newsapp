@@ -5,7 +5,7 @@ class myTheme {
   static const mainColor = Color(0xFF232323);
   static const mainDarker = Color.fromRGBO(23, 20, 20, 1.0);
   static const whiteGrey = Color.fromRGBO(244, 243, 243, 1);
-  static const teal = Color(0xFF3596A4);
+  static const teal = Color(0xFFF0A04B);
   static final lightTheme = ThemeData(
       bottomSheetTheme: BottomSheetThemeData(
           backgroundColor: Colors.white,

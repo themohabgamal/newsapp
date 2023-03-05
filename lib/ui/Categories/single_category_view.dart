@@ -32,7 +32,7 @@ class _SingleCategoryViewState extends State<SingleCategoryView> {
         ],
       ),
       body: FutureBuilder(
-        future: apiManager.getSources(widget.category.categoryId),
+        future: apiManager.getSources(widget.category.categoryId,sp.currentLang),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(

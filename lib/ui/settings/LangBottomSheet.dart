@@ -1,36 +1,35 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/Provider/SettingsProvider.dart';
 import 'package:news_app/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../Provider/SettingsProvider.dart';
 
-class SettingsBottomSheet extends StatefulWidget {
+class LangBottomSheet extends StatefulWidget {
 
   @override
-  State<SettingsBottomSheet> createState() => _SettingsBottomSheetState();
+  State<LangBottomSheet> createState() => _LangBottomSheetState();
 }
 
-class _SettingsBottomSheetState extends State<SettingsBottomSheet> {
+class _LangBottomSheetState extends State<LangBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    var sp = Provider.of<SettingsProvider>(context);
-    String currentTheme;
+    var sp=Provider.of<SettingsProvider>(context);
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 30,horizontal: 30),
+      padding:  EdgeInsets.symmetric(vertical: 30,horizontal: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
             onTap:() {
               setState(() {
-                sp.setTheme(ThemeMode.light);
-                currentTheme='light';
+                sp.setLang('en');
               });
             },
             child: Container(
               padding: EdgeInsets.only(bottom: 10),
               width: double.infinity,
-              child: Text(AppLocalizations.of(context)!.light,style: Theme.of(context).textTheme.headline5),
+              child: Text(AppLocalizations.of(context)!.english,style: Theme.of(context).textTheme.headline5),
             ),
           ),
           Padding(
@@ -40,14 +39,13 @@ class _SettingsBottomSheetState extends State<SettingsBottomSheet> {
           InkWell(
             onTap:() {
               setState(() {
-                sp.setTheme(ThemeMode.dark);
-                currentTheme='dark';
+                sp.setLang('fr');
               });
             },
             child: Container(
               padding: EdgeInsets.only(top: 10),
               width: double.infinity,
-              child: Text(AppLocalizations.of(context)!.dark,style: Theme.of(context).textTheme.headline5),
+              child: Text('French',style: Theme.of(context).textTheme.headline5),
             ),
           ),
 

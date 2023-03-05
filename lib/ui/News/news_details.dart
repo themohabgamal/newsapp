@@ -51,8 +51,10 @@ class NewsDetails extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   '${news?.author ?? ''}',
+style: Theme.of(context).textTheme.subtitle2?.copyWith(color: myTheme.teal),
                   textAlign: TextAlign.left,
                 )),
+            SizedBox(height: 20,),
             Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -65,12 +67,11 @@ class NewsDetails extends StatelessWidget {
             Container(
               alignment: Alignment.centerRight,
               child: Text('${news?.publishedAt ?? ''}',
-                  style: const TextStyle(
-                      color: Color.fromRGBO(49, 46, 46, 0.8666666666666667)),
+                  style: Theme.of(context).textTheme.subtitle2?.copyWith(color: myTheme.teal),
                   textAlign: TextAlign.end),
             ),
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
             Container(
               child: Text(
@@ -98,6 +99,7 @@ class NewsDetails extends StatelessWidget {
                   Icon(
                     Icons.arrow_right,
                     size: 30,
+                    color: myTheme.teal,
                   )
                 ],
               ),
@@ -107,11 +109,11 @@ class NewsDetails extends StatelessWidget {
       ),
     );
   }
-
   void openUrl(String url) async {
     var uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
-      launchUrl(uri);
+      await launchUrl(uri,mode: LaunchMode.inAppWebView);
     }
+    else throw "can't open url";
   }
 }

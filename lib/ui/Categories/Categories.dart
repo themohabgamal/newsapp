@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/ui/Categories/Category_grid_view.dart';
 import 'package:news_app/ui/Categories/single_category_view.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'CategoryItem.dart';
 
 class Categories extends StatefulWidget {
@@ -13,35 +13,35 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
-  List<CategoryItem> categories = [
-    CategoryItem(
-        categoryName: "Sports",
-        categoryId: "sports",
-        categoryImage: "assets/images/sports.png"),
-    CategoryItem(
-        categoryName: "Business",
-        categoryId: "business",
-        categoryImage: "assets/images/business.png"),
-    CategoryItem(
-        categoryName: "General",
-        categoryId: "general",
-        categoryImage: "assets/images/general.png"),
-    CategoryItem(
-        categoryName: "Technology",
-        categoryId: "technology",
-        categoryImage: "assets/images/technology.png"),
-    CategoryItem(
-        categoryName: "Entertainment",
-        categoryId: "entertainment",
-        categoryImage: "assets/images/entertainment.png"),
-    CategoryItem(
-        categoryName: "Health",
-        categoryId: "health",
-        categoryImage: "assets/images/health.png"),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    List<CategoryItem> categories = [
+      CategoryItem(
+          categoryName: AppLocalizations.of(context)!.sports,
+          categoryId: "sports",
+          categoryImage: "assets/images/sports.png"),
+      CategoryItem(
+          categoryName: AppLocalizations.of(context)!.business,
+          categoryId: "business",
+          categoryImage: "assets/images/business.png"),
+      CategoryItem(
+          categoryName: AppLocalizations.of(context)!.general,
+          categoryId: "general",
+          categoryImage: "assets/images/general.png"),
+      CategoryItem(
+          categoryName: AppLocalizations.of(context)!.technology,
+          categoryId: "technology",
+          categoryImage: "assets/images/technology.png"),
+      CategoryItem(
+          categoryName: AppLocalizations.of(context)!.entertainment,
+          categoryId: "entertainment",
+          categoryImage: "assets/images/entertainment.png"),
+      CategoryItem(
+          categoryName: AppLocalizations.of(context)!.health,
+          categoryId: "health",
+          categoryImage: "assets/images/health.png"),
+    ];
     return Scaffold(
       body:selectedCategory==null?Column(
         children: [
@@ -50,13 +50,16 @@ class _CategoriesState extends State<Categories> {
           ),
           Container(
             alignment: Alignment.bottomCenter,
-            child: Text(
-              "Pick your field of interest",
-              style: GoogleFonts.openSans(
-                  textStyle: Theme.of(context)
-                      .textTheme
-                      .headline5
-                      ?.copyWith(fontSize: 28)),
+            width: double.infinity,
+            child: Center(
+              child: Text(
+                AppLocalizations.of(context)!.pickYour,
+                style: GoogleFonts.openSans(
+                    textStyle: Theme.of(context)
+                        .textTheme
+                        .headline5
+                        ?.copyWith(fontSize: 28)),textAlign: TextAlign.center,
+              ),
             ),
           ),
           Expanded(

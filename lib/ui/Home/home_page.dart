@@ -10,6 +10,8 @@ import '../../Provider/SettingsProvider.dart';
 import '../../modules/NewsResponse.dart';
 import '../Categories/category_tabs.dart';
 import '../News/news_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class homePage extends StatelessWidget {
 static const String routeName='homePage';
 
@@ -22,19 +24,19 @@ static const String routeName='homePage';
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-             SizedBox(height: 20,),
+             SizedBox(height: 10,),
              Container(
                color: sp.currentTheme==ThemeMode.light?myTheme.whiteGrey:myTheme.mainColor,
-             height: 120,
+             height: 90,
              width: double.infinity,
              alignment: Alignment.centerLeft,
              padding: EdgeInsets.symmetric(horizontal: 20),
              child: Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
-                 Text('News at',style: Theme.of(context).textTheme.headline6?.copyWith(fontSize: 28,fontWeight: FontWeight.w400),),
+                 Text(AppLocalizations.of(context)!.firstHeader,style: Theme.of(context).textTheme.headline6?.copyWith(fontSize: 28,fontWeight: FontWeight.w400),),
                  SizedBox(height: 8,),
-                 Text('Another Perspective',style: Theme.of(context).textTheme.headline6?.copyWith(fontSize: 35,fontWeight: FontWeight.w500),),
+                 Text(AppLocalizations.of(context)!.secondHeader,style: Theme.of(context).textTheme.headline6?.copyWith(fontSize: 35,fontWeight: FontWeight.w500),),
 
                ],
              ),
@@ -42,12 +44,12 @@ static const String routeName='homePage';
              SizedBox(height: 10,),
              Padding(
                padding: const EdgeInsets.symmetric(horizontal: 18,vertical: 10),
-               child: Text('Hot News',style: Theme.of(context).textTheme.headline5?.copyWith(fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
+               child: Text(AppLocalizations.of(context)!.hotNews,style: Theme.of(context).textTheme.headline5?.copyWith(fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
              ),
              SizedBox(height: 10,),
              Expanded(
                child: FutureBuilder(
-                 future: apiManager.getSources('general'),
+                 future: apiManager.getSources('general', sp.currentLang),
                  builder: (context, snapshot) {
                    if (snapshot.connectionState == ConnectionState.waiting) {
                      return Center(

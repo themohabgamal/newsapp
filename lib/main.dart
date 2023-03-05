@@ -7,6 +7,10 @@ import 'package:news_app/ui/Home/home_screen.dart';
 import 'package:news_app/ui/News/news_details.dart';
 import 'package:news_app/ui/settings/settings.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter/services.dart';
+
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -19,8 +23,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var sp = Provider.of<SettingsProvider>(context);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));    var sp = Provider.of<SettingsProvider>(context);
     return MaterialApp(
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: Locale(sp.currentLang),
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('fr'), // arabic
+      ],
       debugShowCheckedModeBanner: false,
       title: 'Live News',
       themeMode:sp.currentTheme,
